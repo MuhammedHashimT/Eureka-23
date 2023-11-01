@@ -1,0 +1,785 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Grade {
+  """"""
+  id: Int
+  name: String
+  pointGroup: Int
+  pointSingle: Int
+  pointHouse: Int
+  percentage: Int
+  candidateProgramme: [CandidateProgramme!]
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Position {
+  """"""
+  id: Int
+  name: String
+  value: Int
+  pointGroup: Int
+  pointSingle: Int
+  pointHouse: Int
+  candidateProgramme: [CandidateProgramme!]
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type CustomSetting {
+  """Example field (placeholder)"""
+  id: Int!
+  name: String
+  programmes: [Programme!]
+  category: Category
+  max: Float
+  min: Float
+
+  """Date of creation"""
+  createdAt: DateTime!
+
+  """Date of last update"""
+  updatedAt: DateTime!
+}
+
+type Judge {
+  """"""
+  id: Int
+  username: String
+  password: String
+  judgeName: String
+  programme: Programme
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type Skill {
+  """"""
+  id: Int
+  name: String
+  shortName: String
+  description: String
+  programmes: [Programme!]
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type Substitute {
+  """"""
+  id: Int
+  reason: String
+  isAccepted: Boolean
+  isRejected: Boolean
+  programme: Programme
+  oldCandidate: Candidate
+  newCandidate: Candidate
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type Programme {
+  """Example field (placeholder)"""
+  id: Int
+  programCode: String
+  name: String
+  mode: Modes
+  type: Types
+  model: Models
+  groupCount: Int
+  candidateCount: Int
+  date: DateTime
+  venue: Int
+  duration: Int!
+  totalMark: Int
+  conceptNote: String
+  resultEntered: Boolean!
+  resultPublished: Boolean!
+  checkToReadNo: Int
+  anyIssue: Boolean!
+  candidateProgramme: [CandidateProgramme!]
+  judges: [Judge!]
+  substitutes: [Substitute!]
+  skill: Skill
+  category: Category
+  customSetting: CustomSetting
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+enum Modes {
+  STAGE
+  NON_STAGE
+  OUTDOOR_STAGE
+}
+
+enum Types {
+  SINGLE
+  GROUP
+  HOUSE
+}
+
+enum Models {
+  Arts
+  Sports
+}
+
+type CandidateProgramme {
+  """"""
+  id: Int
+  point: Int
+  link: String
+  mark: Float
+  judge1: Float
+  judge2: Float
+  judge3: Float
+  judge4: Float
+  judge5: Float
+  judge6: Float
+  judge7: Float
+  position: Position
+  grade: Grade
+  programme: Programme
+  candidate: Candidate
+  candidatesOfGroup: [Candidate!]
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type Credential {
+  id: Int
+  username: String
+  roles: Roles
+  categories: [Category!]
+  team: Team
+}
+
+enum Roles {
+  NormalUser
+  Admin
+  Controller
+  Media
+  TeamManager
+  Judge
+}
+
+type Team {
+  id: Int
+  name: String
+  shortName: String
+  description: String
+  color: String
+  totalPoint: Float
+  lastResultPoint: Float
+  HousePoint: Float
+  GroupPoint: Float
+  IndividualPoint: Float
+  chestNoSeries: Int
+  credentials: [Credential!]
+  candidates: [Candidate!]
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type Candidate {
+  """Example field (placeholder)"""
+  id: Int
+  name: String
+  class: Int
+  adno: Float
+  dob: String
+  chestNO: String
+  imageId: String
+  gender: Gender
+  individualPoint: Float
+  groupPoint: Float
+  candidateProgrammes: [CandidateProgramme!]
+  substitutesOld: [Substitute!]
+  substitutesNew: [Substitute!]
+  team: Team
+  category: Category
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+type CategorySettings {
+  id: Int
+  maxProgram: Int
+  maxSingle: Int
+  maxGroup: Int
+  maxStage: Int
+  maxNonStage: Int
+  maxOutDoor: Int
+  maxSports: Int
+  maxSportsSingle: Int
+  maxSportsGroup: Int
+  minProgram: Int
+  minSingle: Int
+  minGroup: Int
+  minStage: Int
+  minNonStage: Int
+  minOutDoor: Int
+  minSports: Int
+  minSportsSingle: Int
+  minSportsGroup: Int
+  isProgrammeListUpdatable: Boolean!
+  category: Category
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type Section {
+  """"""
+  id: Int
+  name: String
+  categories: [Category!]
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type Category {
+  """"""
+  id: Int
+  name: String
+  settings: CategorySettings
+  candidates: [Candidate!]
+  programmes: [Programme!]
+  customSettings: [CustomSetting!]
+  section: Section
+  credentials: [Credential!]
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type Detail {
+  """"""
+  id: Int!
+  name: String
+  motto: String
+  institution: String
+  logoId: String
+  coverId: String
+  description: String
+  isMediaHave: Boolean!
+  isSkillHave: Boolean!
+  isResultReady: Boolean!
+  isMultipleResultAllowed: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type LoginType {
+  admin: Credential!
+  token: String!
+}
+
+type Feed {
+  """Example field (placeholder)"""
+  id: Int!
+  name: String!
+  language: Language!
+  content: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum Language {
+  MALAYALAM
+  ENGLISH
+  ARABIC
+  HINDI
+  URDU
+  TAMIL
+  KANNADA
+  TELUGU
+  BENGALI
+  SPANISH
+  FRENCH
+}
+
+type Tag {
+  id: Int!
+  name: String!
+  galleries: [Gallery!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Gallery {
+  id: Int!
+  name: String!
+  imageId: String!
+  tags: [Tag!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Query {
+  candidates: [Candidate!]!
+  candidate(id: Int!): Candidate!
+  teams: [Team!]!
+  team(id: Int!): Team!
+  credentials: [Credential!]!
+  credentialsByTeam(team: String!): [Credential!]!
+  credentialsByRole(role: Roles!): [Credential!]!
+  credential(id: Int!): Credential!
+  checkLoggedIn: Credential!
+  getCookieValue: String!
+  categories: [Category!]!
+  category(id: Int!): Category!
+  categoriesByNames: [Category!]!
+  sections: [Section!]!
+  section(id: Int!): Section!
+  candidateProgrammes: [CandidateProgramme!]!
+  candidateProgramme(id: Int!): CandidateProgramme!
+  programmes: [Programme!]!
+  programme(id: Int!): Programme!
+  skills: [Skill!]!
+  skill(id: Int!): Skill!
+  details: Detail!
+  grades: [Grade!]!
+  grade(id: Int!): Grade!
+  positions: [Position!]!
+  position(id: Int!): Position!
+  categorySettings: [CategorySettings!]!
+  categorySetting(id: Int!): CategorySettings!
+  customSettings: [CustomSetting!]!
+  customSetting(id: Int!): CustomSetting!
+  judges: [Judge!]!
+  judge(id: Int!): Judge!
+  substitutes: [Substitute!]!
+  substitute(id: Int!): Substitute!
+  feeds: [Feed!]!
+  feed(id: Int!): Feed!
+  galleries: [Gallery!]!
+  gallery(id: Int!): Gallery!
+  tags: [Tag!]!
+  tag(id: Int!): Tag!
+}
+
+type Mutation {
+  createCandidate(createCandidateInput: CreateCandidateInput!): Candidate!
+  createManyCandidates(createCandidateInput: CreateInput!): [Candidate!]!
+  updateCandidate(updateCandidateInput: UpdateCandidateInput!): Candidate!
+  removeCandidate(id: Int!): Candidate!
+  createTeam(createTeamInput: CreateTeamInput!): Team!
+  updateTeam(updateTeamInput: UpdateTeamInput!): Team!
+  removeTeam(id: Int!): Team!
+  createCredential(createCredentialInput: CreateCredentialInput!): Credential!
+  updateCredential(updateCredentialInput: UpdateCredentialInput!): Credential!
+  removeCredential(id: Int!): Credential!
+  login(username: String!, password: String!): LoginType!
+  logout: Boolean!
+  createCategory(createCategoryInput: CreateCategoryInput!): Category!
+  updateCategory(updateCategoryInput: UpdateCategoryInput!): Category!
+  removeCategory(id: Int!): Category!
+  createSection(createSectionInput: CreateSectionInput!): Section!
+  updateSection(updateSectionInput: UpdateSectionInput!): Section!
+  removeSection(id: Int!): Section!
+  createCandidateProgramme(createCandidateProgrammeInput: CreateCandidateProgrammeInput!): CandidateProgramme!
+  updateCandidateProgramme(updateCandidateProgrammeInput: UpdateCandidateProgrammeInput!): CandidateProgramme!
+  removeCandidateProgramme(id: Int!): CandidateProgramme!
+  addNormalResult(programmeCode: String!, addResult: arrayInput!): [CandidateProgramme!]!
+  approveJudgeResult(programmeCode: String!, judgeName: String!): [CandidateProgramme!]!
+  liveResult(programmeCode: [String!]!, timeInSec: Float!): Int!
+  publishResults(programmeCode: [String!]!): String!
+  publishResult(programmeCode: String!): Programme!
+  createProgramme(createProgrammeInput: CreateProgrammeInput!): Programme!
+  createManyProgrammes(createProgrammeInput: createInput!): [Programme!]!
+  updateProgramme(updateProgrammeInput: UpdateProgrammeInput!): Programme!
+  removeProgramme(id: Int!): Programme!
+  setSchedule(createScheduleInput: CreateSchedule!): Programme!
+  setManySchedule(createScheduleInput: [ScheduleCreate!]!): [Programme!]!
+  removeSchedule(code: Int!): Programme!
+  setAnyIssue(code: String!, issue: Boolean!): Programme!
+  createSkill(createSkillInput: CreateSkillInput!): Skill!
+  updateSkill(updateSkillInput: UpdateSkillInput!): Skill!
+  removeSkill(id: Int!): Skill!
+  createDetail(createDetailInput: CreateDetailInput!): Detail!
+  updateDetail(updateDetailInput: UpdateDetailInput!): Detail!
+  createGrade(createGradeInput: CreateGradeInput!): Grade!
+  updateGrade(updateGradeInput: UpdateGradeInput!): Grade!
+  removeGrade(id: Int!): Grade!
+  createPosition(createPositionInput: CreatePositionInput!): Position!
+  updatePosition(updatePositionInput: UpdatePositionInput!): Position!
+  removePosition(id: Int!): Position!
+  createCategorySetting(createCategorySettingInput: CreateCategorySettingInput!): CategorySettings!
+  updateCategorySetting(updateCategorySettingInput: UpdateCategorySettingInput!): CategorySettings!
+  removeCategorySetting(id: Int!): CategorySettings!
+  changeProgrammeListUpdatable(name: String!): CategorySettings!
+  createCustomSetting(createCustomSettingInput: CreateCustomSettingInput!): CustomSetting!
+  updateCustomSetting(updateCustomSettingInput: UpdateCustomSettingInput!): CustomSetting!
+  removeCustomSetting(id: Int!): CustomSetting!
+  createJudge(createJudgeInput: CreateJudgeInput!): Judge!
+  updateJudge(updateJudgeInput: UpdateJudgeInput!): Judge!
+  removeJudge(id: Int!): Judge!
+  uploadMarkByJudge(programmeCode: String!, jugdeId: Float!, addResult: arrayInput!): String!
+  createSubstitute(createSubstituteInput: CreateSubstituteInput!): Substitute!
+  updateSubstitute(updateSubstituteInput: UpdateSubstituteInput!): Substitute!
+  removeSubstitute(id: Int!): Substitute!
+  approveSubstitute(id: Int!): Substitute!
+  rejectSubstitute(id: Int!): Substitute!
+  createFeed(createFeedInput: CreateFeedInput!): Feed!
+  updateFeed(updateFeedInput: UpdateFeedInput!): Feed!
+  removeFeed(id: Int!): Feed!
+  removeGallery(id: Float!): Gallery!
+  createTag(createTagInput: CreateTagInput!): Tag!
+  updateTag(updateTagInput: UpdateTagInput!): Tag!
+  removeTag(id: Int!): Tag!
+}
+
+input CreateCandidateInput {
+  name: String!
+  class: String
+  adno: Float
+  dob: String
+  chestNO: String
+  gender: Gender!
+  team: String
+  category: String
+}
+
+input CreateInput {
+  inputs: [CreateCandidateInput!]!
+}
+
+input UpdateCandidateInput {
+  name: String
+  class: String
+  adno: Float
+  dob: String
+  chestNO: String
+  gender: Gender
+  team: String
+  category: String
+  id: Int!
+}
+
+input CreateTeamInput {
+  name: String!
+  shortName: String!
+  description: String
+  color: String
+}
+
+input UpdateTeamInput {
+  name: String
+  shortName: String
+  description: String
+  color: String
+  id: Int!
+}
+
+input CreateCredentialInput {
+  username: String!
+  password: String!
+  roles: Roles!
+  categories: [String!]
+  team: String
+}
+
+input UpdateCredentialInput {
+  username: String
+  password: String
+  roles: Roles
+  categories: [String!]
+  team: String
+  id: Int!
+}
+
+input CreateCategoryInput {
+  name: String!
+  section: String!
+}
+
+input UpdateCategoryInput {
+  name: String
+  section: String
+  id: Int!
+}
+
+input CreateSectionInput {
+  name: String!
+}
+
+input UpdateSectionInput {
+  name: String
+  id: Int!
+}
+
+input CreateCandidateProgrammeInput {
+  programme_code: String!
+  chestNo: String!
+  candidatesOfGroup: [String!]
+}
+
+input UpdateCandidateProgrammeInput {
+  programme_code: String
+  chestNo: String
+  candidatesOfGroup: [String!]
+  id: Int!
+}
+
+input arrayInput {
+  inputs: [AddResult!]!
+}
+
+input AddResult {
+  chestNo: String!
+  mark: Float
+}
+
+input CreateProgrammeInput {
+  programCode: String!
+  name: String!
+  mode: Mode!
+  type: Type!
+  model: String!
+  groupCount: Int
+  candidateCount: Int!
+  date: String
+  venue: Int
+  duration: Int!
+  conceptNote: String!
+  skill: String!
+  category: String!
+}
+
+enum Mode {
+  STAGE
+  NON_STAGE
+  OUTDOOR_STAGE
+}
+
+enum Type {
+  SINGLE
+  GROUP
+  HOUSE
+}
+
+input createInput {
+  inputs: [CreateProgrammeInput!]!
+}
+
+input UpdateProgrammeInput {
+  programCode: String
+  name: String
+  mode: Mode
+  type: Type
+  model: String
+  groupCount: Int
+  candidateCount: Int
+  date: String
+  venue: Int
+  duration: Int
+  conceptNote: String
+  skill: String
+  category: String
+  id: Int!
+}
+
+input CreateSchedule {
+  code: String!
+  date: DateTime!
+  venue: Int
+}
+
+input ScheduleCreate {
+  inputs: [CreateSchedule!]!
+}
+
+input CreateSkillInput {
+  name: String!
+  description: String!
+  shortName: String!
+}
+
+input UpdateSkillInput {
+  name: String
+  description: String
+  shortName: String
+  id: Int!
+}
+
+input CreateDetailInput {
+  name: String!
+  motto: String!
+  institution: String!
+  description: String!
+  isMediaHave: Boolean! = true
+  isSkillHave: Boolean! = true
+  logoId: String!
+  coverId: String!
+}
+
+input UpdateDetailInput {
+  name: String
+  motto: String
+  institution: String
+  description: String
+  isMediaHave: Boolean = true
+  isSkillHave: Boolean = true
+  logoId: String
+  coverId: String
+  id: Int!
+}
+
+input CreateGradeInput {
+  name: String!
+  percentage: Int!
+  pointGroup: Int!
+  pointSingle: Int!
+  pointHouse: Int!
+}
+
+input UpdateGradeInput {
+  name: String
+  percentage: Int
+  pointGroup: Int
+  pointSingle: Int
+  pointHouse: Int
+  id: Int!
+}
+
+input CreatePositionInput {
+  name: String!
+  value: Int!
+  pointGroup: Int!
+  pointSingle: Int!
+  pointHouse: Int!
+}
+
+input UpdatePositionInput {
+  name: String
+  value: Int
+  pointGroup: Int
+  pointSingle: Int
+  pointHouse: Int
+  id: Int!
+}
+
+input CreateCategorySettingInput {
+  category: String!
+  maxProgram: Int!
+  maxSingle: Int!
+  maxGroup: Int!
+  maxStage: Int
+  maxNonStage: Int
+  maxOutDoor: Int
+  maxSports: Int
+  maxSportsSingle: Int
+  maxSportsGroup: Int
+  minProgram: Int!
+  minSingle: Int!
+  minGroup: Int!
+  minStage: Int
+  minNonStage: Int
+  minOutDoor: Int
+  minSports: Int
+  minSportsSingle: Int
+  minSportsGroup: Int
+}
+
+input UpdateCategorySettingInput {
+  category: String
+  maxProgram: Int
+  maxSingle: Int
+  maxGroup: Int
+  maxStage: Int
+  maxNonStage: Int
+  maxOutDoor: Int
+  maxSports: Int
+  maxSportsSingle: Int
+  maxSportsGroup: Int
+  minProgram: Int
+  minSingle: Int
+  minGroup: Int
+  minStage: Int
+  minNonStage: Int
+  minOutDoor: Int
+  minSports: Int
+  minSportsSingle: Int
+  minSportsGroup: Int
+  id: Int!
+}
+
+input CreateCustomSettingInput {
+  name: String!
+  programs: [String!]!
+  category: String!
+  max: Int!
+  min: Int!
+}
+
+input UpdateCustomSettingInput {
+  name: String
+  programs: [String!]
+  category: String
+  max: Int
+  min: Int
+  id: Int!
+}
+
+input CreateJudgeInput {
+  username: String!
+  password: String!
+  judgeName: String!
+  programmeCode: String!
+}
+
+input UpdateJudgeInput {
+  username: String
+  password: String
+  judgeName: String
+  programmeCode: String
+  id: Int!
+}
+
+input CreateSubstituteInput {
+  reason: String!
+  programme: String!
+  oldCandidate: String!
+  newCandidate: String!
+}
+
+input UpdateSubstituteInput {
+  reason: String
+  programme: String
+  oldCandidate: String
+  newCandidate: String
+  id: Int!
+}
+
+input CreateFeedInput {
+  name: String!
+  language: Language!
+  content: String!
+}
+
+input UpdateFeedInput {
+  name: String
+  language: Language
+  content: String
+  id: Int!
+}
+
+input CreateTagInput {
+  name: String!
+}
+
+input UpdateTagInput {
+  name: String
+  id: Int!
+}

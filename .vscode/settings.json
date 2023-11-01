@@ -1,0 +1,12 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.prettierPath": "./node_modules/prettier",
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "cSpell.words": [
+        "Finded",
+        "findedcandidates",
+        "firebasedb"
+    ]
+}

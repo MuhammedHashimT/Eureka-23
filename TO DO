@@ -1,0 +1,347 @@
+RESULT ->
+
+Issues detect 
+Approve Issue
+Fix Issue
+
+On Publish ->
+
+Check programme ready to publish
+
+all changed :)
+
+https://dev.to/kkoziarski/react-vite-github-codespaces-5529
+
+
+
+# Write your query or mutation here
+
+{
+  # candidateProgrammes {
+  #   candidate {
+  #     chestNO
+  #     id
+  #   }
+  #   programme {
+  #     programCode
+  #   }
+  #   candidatesOfGroup{
+  #     name
+  #     chestNO
+  #   }
+  #   id
+  # }
+
+  # judges{
+  #   username
+  #   id
+  # }
+
+  # candidate(id:27){
+  #  name
+  #   chestNO
+  # }
+
+  # candidates{
+  #   candidateProgrammesOfGroup{
+  #     id
+  #   }
+  # }
+
+  # grades{
+  #   name
+  #   percentage
+  # }
+
+  # positions{
+  #   name
+  # }
+
+  # substitutes{
+  #   id
+  #   programme{
+  #     programCode
+  #   }
+  #   oldCandidate{
+  #     chestNO
+  #   }
+  #   newCandidate{
+  #     chestNO
+  #     name
+  #   }
+  #   reason
+  #   isAccepted
+  # }
+
+  # candidates{
+  #   chestNO
+  #   name
+  #   category{
+  #     name
+  #   }
+  # }
+
+  #   programmes{
+  #     name
+  #     programCode
+  #     category{
+  # name}
+  #     groupCount
+  #   }
+
+  #   skills{
+  # name}
+
+  # categories{
+  #   name
+  # }
+
+  # programme(id: 17) {
+  #   candidateProgramme {
+  #     candidate {
+  #       name
+  #       chestNO
+  #     }
+  #     judge1
+  #     judge2
+  #     judge3
+  #     mark
+  #     point
+  #   }
+  # }
+  
+  # grades{
+  #   pointHouse
+  #   percentage
+  # }
+  
+  teams{
+name
+  id}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mutation {
+  # approveSubstitute(id: 1) {
+  # 	newCandidate{
+  #     name
+  #   }
+  # }
+
+  # createSubstitute(createSubstituteInput:{
+  #   oldCandidate : 101
+  #   newCandidate : 104
+  #   reason : "Medical"
+  #   programme:"H1"
+  # }){
+  #   reason
+  # }
+
+  # addNormalResult(
+  #   programmeCode: "H1"
+  #   addResult: {
+  #     inputs: [
+  #       { chestNo: 301, mark: 8.58903 }
+  #       { chestNo: 204, mark: 7.853 }
+  #       { chestNo: 104, mark: 9.3590 }
+  #       { chestNo: 403, mark: 6.999 }
+  #       # { chestNo: 307, mark: 7.5 }
+  #       # { chestNo: 308, mark: 7.5 }
+  #       # { chestNo: 411, mark: 7.5 }
+  #       # { chestNo: 412, mark: 9.2 }
+  #     ]
+  #   }
+  # ) {
+  #   point
+  #   id
+  #   mark
+  #   grade {
+  #     name
+  #   }
+  #   position {
+  #     name
+  #   }
+  # }
+
+  # createCandidateProgramme(createCandidateProgrammeInput:{
+  #     chestNo : 101,
+  #   programme_code : "H1"
+  #   candidatesOfGroup : [101 , 102 , 103]
+  # }){
+  # point
+  # }
+
+  # updateCandidateProgramme(updateCandidateProgrammeInput:{
+  #   id:53
+  #   chestNo:301,
+  #   programme_code:"H1"
+  #   candidatesOfGroup : [301 , 309,305]
+  # }){
+  #   id
+  # }
+
+  # createProgramme(
+  #   createProgrammeInput: {
+  #     name: "Debate"
+  #     groupCount: 1
+  #     candidateCount: 3
+  #     conceptNote: "Debate on given sb"
+  #     category: "Junior"
+  #     programCode: "H1"
+  #     mode: NON_STAGE
+  #     type: HOUSE
+  #     duration: 50
+  #     skill: "Tech"
+  #   }
+  # ) {
+  #   id
+  #   type
+  # }
+
+  # approveSubstitute(id:7){
+  #   isAccepted
+  # }
+
+  #   removeCandidateProgramme(id:54){
+  #     point
+  # }
+
+  #   rejectSubstitute(id:4){
+  #     isRejected
+  # }
+
+  # createJudge(createJudgeInput:{
+  #   username:"aaa"
+  #   password:"123",
+  #   judgeName:"judge1"
+  #   programmeCode:"H1"
+  # }){
+  #   username
+  # }
+
+  # liveResult
+
+    # uploadMarkByJudge(
+    #   jugdeId: 3
+    #   programmeCode: "H1"
+    #   addResult: {
+    #     inputs: [
+    #       { chestNo: 301, mark: 7 }
+    #       { chestNo: 204, mark: 8.56456 }
+    #       { chestNo: 104, mark: 7.3 }
+    #       { chestNo: 403, mark: 6 }
+    #     ]
+    #   }
+    # ) {
+    #   username
+    # }
+  
+  # createManyCandidates(createCandidateInput:{
+  #   inputs:[
+  #     {
+  #       name : "Jana",
+  #       adno: 3346
+  #     category: "Junior"
+  #     chestNO: 211
+  #     class: 1
+  #     dob: "06-07-2008"
+  #     gender: MALE
+  #     team: "Bursa"
+  #     }
+  #     ,
+  #      {
+  #       name : "Mana",
+  #       adno: 3455
+  #     category: "Junior"
+  #     chestNO: 212
+  #     class: 1
+  #     dob: "06-07-2008"
+  #     gender: MALE
+  #     team: "Bursa"
+  #     }
+  #     ,
+  #      {
+  #       name : "Gana",
+  #       adno: 3456
+  #     category: "Junior"
+  #     chestNO: 213
+  #     class: 1
+  #     dob: "06-07-2008"
+  #     gender: MALE
+  #     team: "Bursa"
+  #     }
+  #   ]
+  # }){
+  #   name
+  # }
+  
+#   createManyProgrammes(createProgrammeInput:{
+#     inputs:[
+#       {
+#     name : "Rubics Cube"
+#       candidateCount: 2
+#       conceptNote: "Cube rubics"
+#       category: "Junior"
+#       programCode: "QJ20"
+#       mode: NON_STAGE
+#       type: SINGLE
+#       duration: 50
+#       skill: "Tech"
+#       },
+#       {
+#         name : "MS Paint"
+#       candidateCount: 2
+#       conceptNote: "computer skills"
+#       category: "Junior"
+#       programCode: "QJ21"
+#       mode: NON_STAGE
+#       type: SINGLE
+#       duration: 50
+#       skill: "Tech"
+#       }
+#     ]
+#   }){
+# name}
+  
+  
+}
